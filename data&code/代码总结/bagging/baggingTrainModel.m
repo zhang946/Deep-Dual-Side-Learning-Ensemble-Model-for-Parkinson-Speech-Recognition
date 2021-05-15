@@ -1,0 +1,13 @@
+function [correct,p_l,t_l]=baggingTrainModel(data1,label1,data2,label2,data3,label3)
+correctArr=zeros(3:1);
+l1=zeros(3:1);
+l2=zeros(3:1);
+%correctArr(1,1)=SVM(data1,data_label1);
+%correctArr(2,1)=SVM(data2,data_label2);
+%correctArr(3,1)=SVM(data3,data_label3);
+[correctArr(1,:),l1(1,:),l2(1,:)]=buildSimpleModel2(data1,label1);
+[correctArr(2,:),l1(2,:),l2(2,:)]=buildSimpleModel2(data2,label2);
+[correctArr(3,:),l1(3,:),l2(3,:)]=buildSimpleModel2(data3,label3);
+[correct,num]=max(correctArr(:,1));
+p_l=l1(num,:);
+t_l=l2(num,:);
